@@ -1,0 +1,32 @@
+import praw
+
+
+user_input = str(input("Enter Topic"))
+reddit = praw.Reddit(client_id="0urYYJU5COJDfA",
+                     client_secret="BJkD6i6Ang_RqMjUj7LjdrIDoD4",
+                     user_agent="Test Script",
+                     username="kookiesnmochis",
+                     password="kookiesnmochis123")
+subreddit= reddit.subreddit('recipes')
+top = subreddit.top(limit=100)
+type(top)
+x=next(top)
+dir(x)
+
+
+
+
+
+
+
+for submission in subreddit.search(user_input):
+    if submission.link_flair_text == "Recipe" and len(submission.selftext) > 200:
+        assert isinstance(submission.link_flair_text, object)
+        assert isinstance(submission.author, object)
+        print(
+            "Title: {}', Author: {}, Recipe: {}".format(submission.title, submission.author, submission.selftext))
+
+
+
+
+
